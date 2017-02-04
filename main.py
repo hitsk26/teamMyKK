@@ -14,10 +14,14 @@ from __future__ import print_function
 
 import commands
 import cognition as cognition
+import moter as moter
+#switch=false
 def main():
-    commands.getoutput("fswebcam sample.jpg")
-    cognition.cognition("sample.jpg")
-    commands.getoutput("rm sample.jpg")
-
+    #while true:
+      #if switch
+        commands.getoutput("fswebcam sample.jpg")
+        #1 salada 2 potato
+        moter.rotate(cognition.cognition("sample.jpg"))
+        commands.getoutput("rm sample.jpg")
 
 main()

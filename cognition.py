@@ -14,7 +14,7 @@ else:
   
 def cognition(image_url):
 
-  list =[["green", "salad", "broccoli", "fruit", "different types of food", "vegetables"], ["french friesa", "pile of fries", "fries" ,"bananas", "pasta dish", "hot dogs", "french fries"]]
+  list =[[],["green", "salad", "broccoli", "fruit", "different types of food", "vegetables"], ["french friesa", "pile of fries", "fries" ,"bananas", "pasta dish", "hot dogs", "french fries"]]
   headers = {
     'Content-Type':  'application/octet-stream',
     'Ocp-Apim-Subscription-Key': 'dd270ab4b6f7415e9c6122af838f2eb8',
@@ -27,16 +27,16 @@ def cognition(image_url):
     data = response.read()
     data_json = json.loads(data)
     result = data_json['description']['captions'][0]['text'].split(" ")
-    print(data_json['description']['captions'][0]['text'])
     count=0
-    for i in [0,1]:
+    flavor=0
+    for i in [1,2]:
       for text in result:
         if text in list[i]:
           count=count+1
       if count>0:
-        print(i)
-      count=0
+        flavor=i
+        break
     conn.close()
+    return flavor
   except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
-                
