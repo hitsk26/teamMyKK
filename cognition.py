@@ -12,9 +12,9 @@ else:
   from urllib import urlencode
   from httplib import HTTPSConnection
   
-def main(image_url):
+def cognition(image_url):
 
-  list =[[],["green", "salad", "broccoli", "fruit", "different types of food", "vegetables"], ["french friesa", "pile of fries", "fries" ,"bananas", "pasta dish", "hot dogs", "french fries"]]
+  list =[["green", "salad", "broccoli", "fruit", "different types of food", "vegetables"], ["french friesa", "pile of fries", "fries" ,"bananas", "pasta dish", "hot dogs", "french fries"]]
   headers = {
     'Content-Type':  'application/octet-stream',
     'Ocp-Apim-Subscription-Key': 'dd270ab4b6f7415e9c6122af838f2eb8',
@@ -29,7 +29,7 @@ def main(image_url):
     result = data_json['description']['captions'][0]['text'].split(" ")
     print(data_json['description']['captions'][0]['text'])
     count=0
-    for i in [0,1,2]:
+    for i in [0,1]:
       for text in result:
         if text in list[i]:
           count=count+1
@@ -40,7 +40,3 @@ def main(image_url):
   except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
                 
-if __name__ == '__main__':
-  if len(sys.argv) < 2:
-    print("Usage: {} url".format(sys.argv[0]))
-  main(sys.argv[1])

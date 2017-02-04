@@ -1,14 +1,23 @@
-print "Entery while roop"
-while true:
-	# おいしくなあれの発音の確認				
-	if isNotCaputuredOishikunare():
-		continue
-	# 画像撮影
-	path = captureImage()
-	#　料理の認識
-	outputFlavor = congnition(path)
-	# モータ制御 調味料を出す
-	motorControl(outputFlavor)
 
-print "End"
+#print "Entery while roop"
+#while true:
+#	if isNotCaputuredOishikunare():
+#		continue
+#	path = captureImage()
+#	outputFlavor = congnition(path)
+#	motorControl(outputFlavor)
 
+#print "End"
+
+#!/usr/bin/python
+from __future__ import print_function
+
+import commands
+import cognition as cognition
+def main():
+    commands.getoutput("fswebcam sample.jpg")
+    cognition.cognition("sample.jpg")
+    commands.getoutput("rm sample.jpg")
+
+
+main()
