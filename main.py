@@ -13,15 +13,21 @@
 from __future__ import print_function
 
 import commands
+from time import sleep
+import RPi.GPIO as GPIO
 import cognition as cognition
 import moter as moter
 #switch=false
 def main():
-    #while true:
-      #if switch
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(20, GPIO.IN)
+
+    while True:
+      if GPIO.input(20) == GPIO.HIGH:
         commands.getoutput("fswebcam sample.jpg")
         #1 salada 2 potato
         moter.rotate(cognition.cognition("sample.jpg"))
         commands.getoutput("rm sample.jpg")
-
+        break
+    
 main()
