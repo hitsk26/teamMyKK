@@ -11,7 +11,7 @@
 
 #!/usr/bin/python
 from __future__ import print_function
-
+import threading
 import commands
 from time import sleep
 import RPi.GPIO as GPIO
@@ -22,13 +22,12 @@ import sound as sound
 def main():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(20, GPIO.IN)
-    
-    soundThread = threading.Thread(target=sound.play,name="soundThread",args=("/home/tsuzuku/python_games/match1.wav"))
-    soundThread.setDaemon(True)
+    kirakiraSoundPath = '/home/tsuzuku/python_games/match1.wav' 
+    soundThread = threading.Thread(target=sound.play,name="soundThread",args=(kirakiraSoundPath,))
+    soundThread.setDaemon(False)
 
     while True:
       if GPIO.input(20) == GPIO.HIGH:
-        #sound.play("/home/tsuzuku/python_games/match1.wav")
         soundThread.start()
         commands.getoutput("fswebcam sample.jpg")
         #1 salada 2 potato

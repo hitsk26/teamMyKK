@@ -7,8 +7,7 @@ def play(path):
     pygame.mixer.init()
     pygame.mixer.music.load(path)
     
-    pygame.mixer.music.play(3)
+    pygame.mixer.music.play(10)
     pygame.mixer.music.set_volume(0.8)
-    
-    time.sleep(2)
+    time.sleep(10)
     pygame.mixer.music.stop()
