@@ -6,20 +6,22 @@ def rotate(flavor):
 
   GPIO.setmode(GPIO.BCM)
   DEBUG = 0
+  GPIO15 = 15
   GPIO18 = 18
   GPIO23 = 23
   GPIO24 = 24
 
+  GPIO.setup(GPIO15,GPIO.OUT)
   GPIO.setup(GPIO18,GPIO.OUT)
   GPIO.setup(GPIO23,GPIO.OUT)
   GPIO.setup(GPIO24,GPIO.OUT)
 
   if flavor==1:
-    GPIO.output(GPIO23,True)
-    GPIO.output(GPIO24,False)
+    GPIO.output(GPIO15,True)
+    GPIO.output(GPIO18,False)
     time.sleep(3)
-    GPIO.output(GPIO23,False)
-    GPIO.output(GPIO24,False)
+    GPIO.output(GPIO15,False)
+    GPIO.output(GPIO18,False)
   elif flavor==2:
     GPIO.output(GPIO23,True)
     GPIO.output(GPIO24,False)
